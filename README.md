@@ -80,7 +80,7 @@ The Godot documentation suggests placing source code near its associated scenes 
 - **Dependency Injection Techniques**: For scenes with external dependencies, which will inevitably happen, implement dependency injection (ideally, from an ancestor) in one of the following ways:
 	- Scene controller emits a signal/event for external procedures to run in response to.
 	- Scene controller has a public (non-underscore-prefixed) method for externals to directly call.
-	- Scene controller has a publically settable (non-underscore-prefixed) field/property for externals to directly a inject reference or value into.
+	- Scene controller has a publically settable (non-underscore-prefixed) field/property for externals to directly inject a reference or value into.
 - **Featureful Scenes**: Scenes should be deep / featureful. Scenes containing merely 1 or 2 nodes are to be avoided to reduce clutter and complexity. Often, simple 1 or 2 node scenes, especially ones without featureful controller scripts, can simply be recreated in just a few clicks. Exceptions should be made for scenes with deep / featureful controller scripts. 
 - **Generality of Scenes**: Scenes should be generally useful, potentially being instanced and reused across many other scenes, or throughout the the game/application lifecycle. A scene that is instanced precisely once and does not persist across scene loads should probably be "inlined" (right click in SceneTree -> `Make Local` -> right click in FileSystem -> `View Owners` to double check -> delete) to reduce clutter and complexity.
 - **Data Persistence and Sharing**: Use `static` for data persisting between scenes or shared across objects. For inspector serialization, consider [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources). Prefer `static` classes over [autoloads](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html), unless inheritance from a `Godot` type is needed. Use `static` classes or autoloads only if they  have no dependencies and self-manage their own state. 
@@ -207,6 +207,6 @@ obj/
 *.blend1
 ``` 
 
-Saving resources as `.tres` extension (instead of `.res`) is generally advisable for most resource types, because it makes Git history more interpretable. Maybe with the exception of resources which are just huge numerical data blobs, like meshes.
+Saving resources as `.tres` extension (instead of `.res`) is generally advisable for most resource types, because it makes Git history more interpretable. The main exceptions are resources which are just huge numerical data blobs, like meshes.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
