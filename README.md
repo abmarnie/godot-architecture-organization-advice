@@ -2,7 +2,7 @@
 
 This article summarizes my (https://twitter.com/abmarnie) opinions on structuring a mid-sized Godot 4.0+ project, drawn from my three months of experience developing [Ettare](https://twitter.com/cdbunker2) in Godot, analyzing other Godot projects, discussing with other experienced Godot devs, and my previous two years of experience in game development in Unity.
 
-It goes without saying, be judicious, don't take things too far, only follow advice that you see the wisdom of, and most of all, don't do anything that would make things less fun.
+It goes without saying, be judicious, don't take things too far, only follow advice that you see the wisdom of, and most of all, don't do anything that would make development less fun.
 
 **Contents**::
 - [Directory Structure Advice](#directory-structure-advice)
