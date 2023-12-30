@@ -4,7 +4,7 @@ This article summarizes my (https://twitter.com/abmarnie) opinions on structurin
 
 It goes without saying: be judicious, don't take things too far, only follow advice that you see the wisdom of, and don't do anything that would make development less fun.
 
-**Contents**::
+**Contents**:
 - [Directory Structure Advice](#directory-structure-advice)
 - [Scene Structure Advice](#scene-structure-advice)
 - [QoL Advice](#qol-advice)
