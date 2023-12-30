@@ -92,7 +92,7 @@ The Godot documentation suggests placing source code near its associated scenes 
 
 ## QoL Advice
 
-- Regularly update your tech stack, including Godot, .NET / C# (if applicable), to benefit from fixes and improvements. It does not take very long.
+- Regularly update your tech stack, including Godot, .NET / C# (if applicable), to benefit from fixes and improvements. It does not take very long. Though, be juducious, if you are about halfway done with your game, it's probably a good idea to lock in your tech stack versions.
 - Always move files and rename them within the Godot editor, or you will suffer.
 - For GDScript in Godot 4.2, enable type warnings for better autocomplete and to convert runtime errors into compile-time errors. If you don't like writing types, use type inference syntax `:=` for all variable initialization.
 - Use existing Nodes for common functionalities. Less code is better.
