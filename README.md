@@ -192,7 +192,7 @@ Use the following `.gitattributes` file to set up Git LFS properly to avoid vers
 *.dylib filter=lfs diff=lfs merge=lfs -text
 ```
 
-Use the following `.gitignore` file to avoid further version control bloat (some of this is C# specific, but it doesn't hurt):
+Use the following `.gitignore` file to avoid further version control bloat:
 ```bash
 nupkg/
 
