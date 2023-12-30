@@ -1,6 +1,6 @@
 # Game Project Architecture and Organization Advice for Godot 4.0+
 
-This article summarizes my (https://twitter.com/abmarnie) opinions on structuring a mid-sized Godot 4.0+ project, drawn from my three months of experience developing [Ettare](https://twitter.com/cdbunker2) in Godot, analyzing other Godot projects, discussing with other experience Godot devs, and my previous two years of experience in game development in Unity.
+This article summarizes my (https://twitter.com/abmarnie) opinions on structuring a mid-sized Godot 4.0+ project, drawn from my three months of experience developing [Ettare](https://twitter.com/cdbunker2) in Godot, analyzing other Godot projects, discussing with other experienced Godot devs, and my previous two years of experience in game development in Unity.
 
 **Contents**::
 - [Directory Structure Advice](#directory-structure-advice)
