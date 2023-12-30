@@ -69,7 +69,9 @@ project_root/
 |   |-- ...
 ```
 
-The Godot documentation suggests placing source code near its associated scenes for consistency, but this is less familiar to programmers and may impact IDE navigation. Instead, I recommend identifying a script's corresponding scene through the fact that it's name matches the aligned scene's name. But both approaches are completely valid and fine.
+The Godot documentation suggests placing source code near its associated scenes for consistency, but this is less familiar to programmers and may impact IDE navigation. Instead, I recommend identifying a script's corresponding scene through the fact that it's name matches the aligned scene's name. 
+
+With that being said, both approaches are completely valid and fine.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
