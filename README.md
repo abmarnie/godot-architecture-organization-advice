@@ -15,7 +15,7 @@ This section is mostly in-line with the philosophy advocated for in the [Best Pr
 - **Addons Folder**: Third party resources, scenes, and code are placed in an `addons/` folder, alongside their licenses.
 - **Source Code Folder**: Source code is placed in a single `src/` folder, for ease of navigation while working in IDEs.
 - **Search-Based Navigation**: Scene filenames prefix their exclusive resources, making them searchable together. For instance, searching "balls_fish" finds `balls_fish.tscn` and its exclusive resources like `balls_fish.blend`, `balls_fish.png`, etc. In general, when naming things, put thought into how searchable the name is.
-- **Scene-Based Assets Folder**: Each scene is in its own folder with its exclusive resources. Scenes and their resources are placed in an `assets/` folder.
+- **Scene-Based Assets Folder**: Scenes and their resources are placed in an `assets/` folder. Each scene is in its own folder with its exclusive resources. 
     - **Inherited Scene Folders**: Folders for inherited scenes are nested within their base scene's folder.
     - **Shared Resources**: Common resources used by multiple scenes are stored in a central folder with subfolders for each owning scene. It is easy to take this too far (too much folder nesting), so be judicious.
     - **Unowned Resources**: General resources not specific to any scene are placed in sibling folders, like `shaders/` for unowned `.shader` files.
