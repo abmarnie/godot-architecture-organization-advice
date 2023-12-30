@@ -207,6 +207,6 @@ obj/
 *.blend1
 ``` 
 
-Saving resources as `.tres` extension (instead of `.res`) generally makes working in Git nicer. Maybe with the exception of resources which are just huge numerical data blobs, like meshes.
+Saving resources as `.tres` extension (instead of `.res`) is generally advisable for most resource types, because it makes Git history more interpretable. Maybe with the exception of resources which are just huge numerical data blobs, like meshes.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
