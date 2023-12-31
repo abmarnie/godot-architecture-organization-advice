@@ -17,7 +17,9 @@ This article summarizes [my opinions](https://twitter.com/abmarnie) on structuri
 
 ## Directory Structure Advice
 
-This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) section of the Godot manual. To avoid [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide), note the use of `snake_case` for file and folder names, except for .cs files, which use `PascalCase`. Also note that for 3D assets, `.gltf` is generally recommended for larger teams. However, for small teams in which everyone is comfortable using Blender, working directly with `.blend` files in the engine is extremely convenient for fast iteration.
+This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) section of the Godot manual. To avoid [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide), note the use of `snake_case` for file and folder names, except for .cs files, which use `PascalCase`. 
+
+Also note, that for 3D assets, `.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable using Blender, working directly with `.blend` files in the engine is extremely convenient for fast iteration. See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html) for more details.
 
 - **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
 - **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation. *If you don't use an IDE, this actually probably just makes things more tedious for you, in which case, treat source code like any other resource* (see the "Scene-Based Assets Folder" tip below).
