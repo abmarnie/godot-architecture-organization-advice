@@ -76,11 +76,6 @@ project_root/
 |   |-- ...
 ```
 
-**Disclaimer**: 
-
-The advice to have an entirely seperate `src/` folder is highly dependent on preferences. In particular, for your average Godot user who does not use an IDE, the benefits might be non existent. If you are not using an IDE, then it is probably more sound to keep source code right next to the scene which uses it.
-
-
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
 ## Scene Structure Advice
