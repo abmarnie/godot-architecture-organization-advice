@@ -15,7 +15,7 @@ This section aligns with the [Best Practices for Project Organization](https://d
 
 - **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
 - **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation
-- **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc.
+- **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc. In general, consider searchability when naming new files.
 - **Scene-Based Assets Folder**:  Organize scenes and their resources in an `assets/` folder. Each scene should have it's own exclusive folder which contains itself and it's exclusive resources.
     - **Inherited Scene Folders**: Nest folders for inherited scenes within their base scene's folder.
     - **Scene Type Specific Resources**: Store commonly used resources for a specific scene type in a central folder, with subfolders for each owning scene. Avoid excessive nesting though.
