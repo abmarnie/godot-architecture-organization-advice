@@ -99,7 +99,7 @@ project_root/
 
 ## Quality of Life Advice
 
-- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files. If you need to rename an entire folder, consider first renaming the leaf files before recursively working your way down to the root folder.
+- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files. If you need to rename an entire folder and doing so naively doesn't work (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo.
 - **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except potentially when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
 - **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
