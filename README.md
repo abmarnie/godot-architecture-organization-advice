@@ -2,7 +2,7 @@
 
 This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2), analyzing other Godot projects, reading the practices recommended by the Godot manual, and having discussions with other experienced Godot devs.
 
-Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. In particular **architecture should always be tailored to the individual needs of a project. Do not treat this as law. For example, in a 2 day game jam, you can ignore architecture completely, it will slow you down.**
+Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. In particular **architecture should always be tailored to the individual needs of a project. Do not treat this as law.** For example, in a 2 day game jam, you can ignore architecture completely, it will slow you down.
 
 **Contents**:
 - [Directory Structure Advice](#directory-structure-advice)
