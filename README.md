@@ -19,10 +19,6 @@ Be judicious: don't take things too far, only follow advice that you see the wis
 
 This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) section of the Godot manual. To avoid [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide), note the use of `snake_case` for file and folder names, except for .cs files, which use `PascalCase`. Also note that using `.gltf` is generally recommended for larger teams, but for small teams in which everyone is comfortable using Blender, working directly with `.blend` files is very convenient.
 
-**Disclaimer**: 
-
-The advice to have an entirely seperate `src/` folder is highly dependent on preferences. In particular, for your average Godot user who does not use an IDE, the benefits might be non existent. If you are not using an IDE, then it is probably more sound to keep source code right next to the scene which uses it.
-
 - **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
 - **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation. *If you 
 - **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc. In general, consider searchability when naming new files.
@@ -79,6 +75,11 @@ project_root/
 |   |-- weapon_data.gd
 |   |-- ...
 ```
+
+**Disclaimer**: 
+
+The advice to have an entirely seperate `src/` folder is highly dependent on preferences. In particular, for your average Godot user who does not use an IDE, the benefits might be non existent. If you are not using an IDE, then it is probably more sound to keep source code right next to the scene which uses it.
+
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
