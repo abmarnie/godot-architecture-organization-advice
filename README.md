@@ -4,7 +4,7 @@ This article summarizes [my opinions](https://twitter.com/abmarnie) on structuri
 
 #### Disclaimer
 
-Selectively follow the advice that makes sense to you. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. **Architecture should always be tailored to the individual needs of a project.**
+**Architecture should always be tailored to the individual needs of a project.** Selectively follow the advice that makes sense to you. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
 - In a 2 day game jam, you should probably ignore architecture completely.
 - In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense.
 - Placing source code files further away from scenes probably won't confer you any benefits if you don't use an IDE. In fact, it may do nothing but hinder you. Even if you do use an IDE, it is rather subjective, especially if you follow the "Search-Based Navigation" advice.
