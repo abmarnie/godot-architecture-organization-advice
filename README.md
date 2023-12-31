@@ -2,7 +2,7 @@
 
 This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2), analyzing other Godot projects, reading the practices recommended by the Godot manual, and having discussions with other experienced Godot devs.
 
-Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun.
+Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. In particular **architecture should always be tailored to the individual needs of a project. Do not treat this as law. For a 2 day game jam, you can ignore architecture completely, it will slow you down.**
 
 **Contents**:
 - [Directory Structure Advice](#directory-structure-advice)
@@ -14,7 +14,7 @@ Be judicious: don't take things too far, only follow advice that you see the wis
 This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) section of the Godot manual. To avoid [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide), note the use of `snake_case` for file and folder names, except for .cs files, which use `PascalCase`. Also note that using `.gltf` is generally recommended for larger teams, but for small teams in which everyone is comfortable using Blender, working directly with `.blend` files is very convenient.
 
 - **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
-- **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation
+- **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation. *If you 
 - **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc. In general, consider searchability when naming new files.
 - **Scene-Based Assets Folder**:  Organize scenes and their resources in an `assets/` folder. Each scene should have it's own exclusive folder which contains itself and it's exclusive resources.
     - **Inherited Scene Folders**: Nest folders for inherited scenes within their base scene's folder.
