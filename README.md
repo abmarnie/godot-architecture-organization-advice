@@ -1,8 +1,8 @@
 # Game Project Architecture and Organization Advice for Godot 4.0+
 
-This article summarizes my (https://twitter.com/abmarnie) opinions on structuring a mid-sized Godot 4.0+ project, drawn from my three months of experience developing [Ettare](https://twitter.com/cdbunker2) in Godot, analyzing other Godot projects, discussing with other experienced Godot devs, and my previous two years in Unity.
+This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2) in Godot, analyzing other Godot projects, and my discussions with other experienced Godot devs.
 
-It goes without saying: be judicious, don't take things too far, only follow advice that you see the wisdom of, and don't do anything that would make development less fun.
+Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that would make development less fun.
 
 **Contents**:
 - [Directory Structure Advice](#directory-structure-advice)
@@ -12,15 +12,15 @@ It goes without saying: be judicious, don't take things too far, only follow adv
 
 ## Directory Structure Advice
 
-This section is mostly in-line with the philosophy advocated for in the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide) section of the manual. Note that all file and foldernames should use `snake_case`, with the exception of `.cs` files, which should use `PascalCase`, otherwise, you will run into headaches later.
+This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide) section of the Godot manual. Note the use of `snake_case` for file and folder names, except for .cs files, which should be `PascalCase`; otherwise you will run into [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide) on some platforms. Also note that using `.gltf` is generally recommended for larger teams, but for small teams in which everyone is comfortable using Blender, working directly with `.blend` files is very convenient.
 
-- **Addons Folder**: Third party resources, scenes, and code are placed in an `addons/` folder, alongside their licenses.
-- **Source Code Folder**: Source code is placed in a single `src/` folder, for ease of navigation while working in IDEs.
-- **Search-Based Navigation**: Scene filenames prefix their exclusive resources, making them searchable together. For instance, searching "balls_fish" finds `balls_fish.tscn` and its exclusive resources like `balls_fish.blend`, `balls_fish_albedo.png`, etc. In general, when naming things, put thought into how searchable the name is.
-- **Scene-Based Assets Folder**: Scenes and their resources are placed in an `assets/` folder. Each scene is in its own folder with its exclusive resources. 
-    - **Inherited Scene Folders**: Folders for inherited scenes are nested within their base scene's folder.
-    - **Shared Resources**: Common resources used by multiple scenes are stored in a central folder with subfolders for each owning scene. It is easy to take this too far (too much folder nesting), so be judicious.
-    - **Unowned Resources**: General resources not specific to any scene are placed in sibling folders, like `shaders/` for unowned `.shader` files.
+- **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
+- **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation
+- **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc.
+- **Scene-Based Assets Folder**:  Organize scenes and their resources in an `assets/` folder. Each scene should have it's own exclusive folder which contains itself and it's exclusive resources.
+    - **Inherited Scene Folders**: Nest folders for inherited scenes within their base scene's folder.
+    - **Scene Type Specific Resources**: Store commonly used resources for a specific scene type in a central folder, with subfolders for each owning scene. Avoid excessive nesting though.
+    - **Globally Shared Resources**: Place general resources used by many different types of scenes in sibling folders, like `shaders/`.
 
 Here is an ASCII art example:
 ```bash
@@ -40,10 +40,12 @@ project_root/
 |   |   |-- foliage_albedo.png
 |   |   |-- foliage.shader
 |   |   |-- grass_1/
-|   |   |   |-- grass_1.blend
+|   |   |   |-- grass_1.gltf
+|   |   |   |-- grass_1.mesh
 |   |   |   |-- grass_1.tscn
 |   |   |-- grass_2/
-|   |   |   |-- grass_2.blend
+|   |   |   |-- grass_2.gltf
+|   |   |   |-- grass_2.mesh
 |   |   |   |-- grass_2.tscn
 |   |   |-- ...
 |   |-- shaders/
@@ -51,14 +53,14 @@ project_root/
 |   |   |-- generic_shader_2.shader
 |   |-- player/
 |   |   |-- player.tscn
-|   |   |-- player.blend
+|   |   |-- player.gltf
 |   |   |-- player_albedo.png
 |   |-- weapon/
 |   |   |-- weapon.tscn
 |   |   |-- axe/
 |   |   |   |-- axe_weapondata.tres
 |   |   |   |-- axe.tscn
-|   |   |   |-- axe.blend
+|   |   |   |-- axe.gltf
 |   |   |   |-- axe_abledo.png
 |   |   |-- ...
 |   |-- ...
@@ -69,42 +71,40 @@ project_root/
 |   |-- ...
 ```
 
-The Godot documentation suggests placing source code near its associated scenes for consistency, but this is less familiar to some programmers and may impact IDE navigation. Instead, I recommend identifying a script's corresponding scene through the fact that it's name matches the aligned scene's name. 
-
-With that being said, both approaches are completely valid and fine. I have spoken with very experienced people who think keeping source code next to scenes is better, and that is what the Godot docs recommends anyways.
+While the Godot documentation suggests placing source code near associated scenes, using a separate `src/` folder can improve IDE navigation. The choice between the two approaches depends on personal preference and project needs.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
 ## Scene Structure Advice
 
-- **Limited Scene Inheritance**: Avoid scene inheritance due to its complexity and poor documentation. If it's too convenient to pass up, limit to one layer of inheritance. The main case where it is "too convenient to pass up" is when the inherited scene needs to share absolutely everything from a base scene, except for resource references (this makes it more convenient to instance things through code).
-- **Non-Editable Subscene Children**: Subscenes' children should be non-editable to maintain encapsulation and a clean SceneTree. Exceptions are allowed (editing children collision shapes), but in most cases having a design that requires so suggests that the root node is not selectively exposing enough (allowing editable children exposes *everything*, which breaks encapsulation).
-- **Single Controller Script Per Scene**: Each scene should have one main "controller" script, named after the scene and its root node, attached to the root. This reduces complexity by minimizing script communication and "scriptitis" (too many small scripts). Multiple scripts can exist in the SceneTree, but only if there is a one-to-one correspondence between scripts and (sub)scenes.
+- **Single Controller Script Per Scene**: Attach one main "controller" script to each scene's root node. Name the controller script after the scene. This reduces complexity by minimizing unnecessary inter-script communication. Multiple scripts may exist in the SceneTree, but only if a one-to-one correspondence between scripts and (sub)scenes is maintained.
 - **Self-Contained Scenes**: Scenes should strive to be self contained, possessing all necessary resources they require. The controller script attached to the root node should only directly reference their children; otherwise dependencies need to be externally injected (see next tip). This keeps things modular and loosely coupled.
-- **Dependency Injection Techniques**: For scenes with external dependencies, which will inevitably happen, implement dependency injection (ideally, from an ancestor) in one of the following ways:
+- **Dependency Injection Techniques**: For scenes with external dependencies, implement dependency injection (ideally from an ancestor) in one of the following ways:
 	- Scene controller emits a signal/event for external procedures to run in response to.
 	- Scene controller has a public (non-underscore-prefixed) method for externals to directly call.
 	- Scene controller has a publically settable (non-underscore-prefixed) field/property for externals to directly inject a reference or value into.
-- **Featureful Scenes**: Scenes should be deep / featureful. Scenes containing merely 1 or 2 nodes are to be avoided to reduce clutter and complexity. Often, simple 1 or 2 node scenes, especially ones without featureful controller scripts, can simply be recreated in just a few clicks. Exceptions should be made for scenes with deep / featureful controller scripts. 
-- **Generality of Scenes**: Scenes should be generally useful, potentially being instanced and reused across many other scenes, or throughout the the game/application lifecycle. A scene that is instanced precisely once and does not persist across scene loads should probably be "inlined" (right click in SceneTree -> `Make Local` -> right click in FileSystem -> `View Owners` to double check -> delete) to reduce clutter and complexity.
-- **Data Persistence and Sharing**: Use `static` for data persisting between scenes or shared across objects. For inspector serialization, consider [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources). Prefer `static` classes over [autoloads](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html), unless inheritance from a `Godot` type is needed. Use `static` classes or autoloads only if they  have no dependencies and self-manage their own state. Having `static` (or autoloaded) state is generally considered bad "Object Oriented" design, so be judicious, especially in larger codebases.
-- **Structure SceneTree by Relationship**: The SceneTree should be organized in relational terms rather than spatial terms. In order to spatially decouple nodes in a parent-child relationship, simply set `top_level = true` in the child.
-- **Get Node Reference Sanely**: Use the wonderful new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine as well, especially if the team is small.
-- **Eager Assertions**: Proactively assert (e.g., in `_ready` or upon dependency injection) in scene controllers to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
+- **Limited Scene Inheritance**: Use scene inheritance sparingly due to its inflexibility. Limit inheritance to one layer if it's too convenient to pass up. It is most useful and necessary when inherting from an imported scene (from a `.blend` or a `.gltf` file), or when a scene needs to share everything with a base scene except for some resource references.
+- **Non-Editable Subscene Children**: Keep subscene children non-editable for encapsulation. Exceptions can be made (e.g., for editing collision shapes), but a design requiring editable children generally indicates that the scene's root node controller script is insufficiently exposing data or functionality.
+- **Featureful Scenes**: To reduce clutter, avoid creating scenes with merely  1 or 2 nodes, *unless they have featureful controller scripts*. Often, non-featureful scenes can just be recreated in a few clicks. Some exceptions will naturally have to be made, e.g., for reusable visuals, or static level props. 
+- **Generality of Scenes**: Design scenes for potential reuse across the game. To reduce clutter, scenes used precisely once and which do not persist across scene loads should be "inlined" (right click in SceneTree -> `Make Local` -> right click in FileSystem -> `View Owners` to double check -> delete).
+- **Data Persistence and Sharing**: Use the `static` keyword for persistent data or shared information and functionality. Consider using [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources) if inspector serialization is needed. [Use autoloads sparingly](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html) for larger projects. Autoloads should generally be used only if they have no dependencies and they never have their state externally mutated.  
+- **Structure SceneTree by Logical Relationship**: Organize the SceneTree relationally rather than spatially. Set `top_level = true` for spatial decoupling in parent-child relationships if needed.
+- **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
+- **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
 ## QoL Advice
 
-- Regularly update your tech stack, including Godot, .NET / C# (if applicable), etc., to benefit from fixes and improvements. It does not take very long. As always, be judicious, if you are nearing release or your project gets rather large, it's probably a good idea to lock in your tech stack versions unless a new must-have fix is released.
-- Always move files and rename them within the Godot editor, or you will suffer.
-- For GDScript in Godot 4.2, enable type warnings for better autocomplete and to convert runtime errors into compile-time errors. If you don't like writing types, use type inference syntax `:=` for all variable initialization.
-- Use existing Nodes for common functionalities. Less code is better.
-- Right click -> `View Owners` before deleting scenes or resources to ensure safety. 
-- Create an empty `.gdignore` file in any folders which shouldn't show up inside the Godot FileSystem Dock. 
-- Color-code project folders for better organization by right click -> `Set Folder Color`.
-- Increase font size in Editor Settings for eye comfort.
-- Set saner defaults for new scripts by saving a template in a new `.gdignore`'d folder`script_templates/node/` and adjusting the Project Setting's `editor/script_templates_search_path` to point to the following new `.gd` and `.cs` files saved in said folder: 
+- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files.
+- **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
+- **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
+- **Reduce FileSystem Clutter**: Create an empty `.gdignore` file in any folders which shouldn't show up inside the FileSystem dock.
+- **Improve Folder Visibility**: Color code project folders by with right click -> `Set Folder Color`.
+- **Eye Comfort**: Increase font size in Editor Settings to improve eye comfort.
+- **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once the project becomes very large.
+- **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
+- **Script Templates**: Save customized [script templates](https://docs.godotengine.org/en/stable/tutorials/scripting/creating_script_templates.html) in `.gdignore`'d `script_templates/node/` folder. Adjust Project Setting's `editor/script_templates_search_path` to match. Consider using the following for saner "New Script" defaults:
 
 ```
 # meta-name: Default
@@ -116,7 +116,7 @@ extends  _BASE_
 func  _ready()  ->  void:
 	 pass
 
-func  _physics_process(delta:  float)  ->  void:
+func  _physics_process(delta: float)  ->  void:
 	 pass
 ```
 ```cs
@@ -147,7 +147,8 @@ public partial class _CLASS_ : _BASE_
 
 ## Git Advice
 
-Use the following `.gitattributes` file to set up Git LFS properly to avoid version control bloat:
+For optimal Git LFS setup and to avoid version control bloat, use the provided `.gitattributes` and `.gitignore` files. When working with resources, prefer `.tres` over `.res` file extension, except when dealing with large numerical data blobs like meshes.
+
 ```bash
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
@@ -196,7 +197,6 @@ Use the following `.gitattributes` file to set up Git LFS properly to avoid vers
 *.dylib filter=lfs diff=lfs merge=lfs -text
 ```
 
-Use the following `.gitignore` file to avoid further version control bloat:
 ```bash
 nupkg/
 
@@ -210,7 +210,5 @@ obj/
 *.translation
 *.blend1
 ``` 
-
-Saving resources as `.tres` extension (instead of `.res`) is generally advisable for most resource types, because it makes Git history more interpretable. The main exceptions are resources which are just huge numerical data blobs, like meshes.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
