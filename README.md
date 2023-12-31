@@ -77,7 +77,7 @@ While the Godot documentation suggests placing source code near associated scene
 
 ## Scene Structure Advice
 
-- **Single Controller Script Per Scene**: Attach one main "controller" script to each scene's root node. Name the controller script after the scene. This reduces complexity by minimizing unnecessary inter-script communication. Multiple scripts may exist in the SceneTree, but only if a one-to-one correspondence between scripts and (sub)scenes is maintained.
+- **Single Controller Script Per Scene**: Attach one main "controller" script to each scene's root node. Name both the controller script and the root node after the scene. This reduces complexity by minimizing unnecessary inter-script communication. Multiple scripts may exist in the SceneTree, but only if a one-to-one correspondence between scripts and (sub)scenes is maintained.
 - **Self-Contained Scenes**: Scenes should strive to be self contained, possessing all necessary resources they require. The controller script attached to the root node should only directly reference their children; otherwise dependencies need to be externally injected (see next tip). This keeps things modular and loosely coupled.
 - **Dependency Injection Techniques**: For scenes with external dependencies, implement dependency injection (ideally from an ancestor) in one of the following ways:
 	- Scene controller emits a signal/event for external procedures to run in response to.
