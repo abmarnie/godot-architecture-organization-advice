@@ -96,7 +96,7 @@ While the Godot documentation suggests placing source code near associated scene
 ## Quality of Life Advice
 
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files.
-- **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in [this repo](https://github.com/abmarnie/godot-architecture-organization-advice).
+- **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo.
 - **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
 - **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
 - **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
