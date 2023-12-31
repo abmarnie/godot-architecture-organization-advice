@@ -95,7 +95,7 @@ While the Godot documentation suggests placing source code near associated scene
 
 ## Quality of Life Advice
 
-- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files.
+- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files. If you need to rename an entire folder, considerfirst renaming the most nested files before recusirvely working your oway down.
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo.
 - **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
 - **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
