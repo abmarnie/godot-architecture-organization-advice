@@ -18,9 +18,7 @@ This article summarizes [my opinions](https://twitter.com/abmarnie) on structuri
 ## Directory Structure Advice
 
 This section aligns with the [Best Practices for Project Organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) section of the Godot manual. To avoid [technical issues related to case sensitivity](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide), note the use of `snake_case` for file and folder names, except for .cs files, which use `PascalCase`. 
-
-Also note, that for 3D assets, `.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable using Blender, working directly with `.blend` files in the engine is extremely convenient for fast iteration. Working with `.blend` files directly is also more convenient with version control (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html) for more details.
-
+ 
 - **Addons Folder**: Store third-party assets, scenes, and code in `addons/`, including their licenses.
 - **Source Code Folder**: Place all source code in a `src/` folder for easy IDE navigation. *If you don't use an IDE, this actually probably just makes things more tedious for you, in which case, treat source code like any other resource* (see the "Scene-Based Assets Folder" tip below).
 - **Search-Based Navigation**: Prefix scene filenames with their exclusive resources for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish.mesh`, etc. In general, consider searchability when naming new files.
@@ -101,6 +99,7 @@ project_root/
 
 ## Quality of Life Advice
 
+- **Importing 3D Assets**:`.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable having Blender installed, working directly with `.blend` files in the engine is extremely convenient for fast iteration, and is also more convenient for version control purposes (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html#importing-blend-files-directly-within-godot) for detailed instructions for working with `.blend` files in Godot.
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files. If you need to rename an entire folder and doing so naively doesn't work (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo.
 - **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except potentially when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
