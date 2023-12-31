@@ -1,4 +1,3 @@
-```
 # meta-name: Default
 # meta-description: Custom base template for Node
 # meta-default: true
@@ -10,4 +9,3 @@ func  _ready()  ->  void:
 
 func  _physics_process(delta: float)  ->  void:
 	 pass
-```
