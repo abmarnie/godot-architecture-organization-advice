@@ -7,7 +7,7 @@ Be judicious: don't take things too far, only follow advice that you see the wis
 **Contents**:
 - [Directory Structure Advice](#directory-structure-advice)
 - [Scene Structure Advice](#scene-structure-advice)
-- [QoL Advice](#qol-advice)
+- [Quality of Life Advice](#quality-of-life-advice)
 - [Git Advice](#git-advice)
 
 ## Directory Structure Advice
@@ -94,7 +94,7 @@ While the Godot documentation suggests placing source code near associated scene
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
-## QoL Advice
+## Quality of Life Advice
 
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized from your local files.
 - **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
