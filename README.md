@@ -4,9 +4,10 @@ This article summarizes [my opinions](https://twitter.com/abmarnie) on structuri
 
 #### Disclaimer
 
-Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. **Architecture should always be tailored to the individual needs of a project.** For example: 
+Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. **Architecture should always be tailored to the individual needs of a project.**
 - In a 2 day game jam, you should probably ignore architecture completely.
 - In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense.
+- Separating out source code from scenes probably won't confer you any benefits if you don't use an IDE. I personally program in C#, and so the advice I give here partially reflects that, at least in that one instance. Otherwise, the advice I give should be language-agnostic (I have some pure GDScript projects, and some pure C# projects, and some which use a mix of both) .
 
 #### Contents
 
