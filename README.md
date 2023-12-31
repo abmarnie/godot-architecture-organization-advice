@@ -25,7 +25,7 @@ This section aligns with the [Best Practices for Project Organization](https://d
 - **Scene-Based Assets Folder**:  Organize scenes and their resources in an `assets/` folder. Each scene should have it's own exclusive folder which contains itself and it's exclusive resources.
     - **Inherited Scene Folders**: Nest folders for inherited scenes within their base scene's folder.
     - **Scene Type Specific Resources**: Store commonly used resources for a specific scene type in a central folder, with subfolders for each owning scene. Avoid excessive nesting though.
-    - **Globally Shared Resources**: Place general resources used by many different types of scenes in sibling folders, like `shaders/`.
+    - **Globally Shared Resources**: Place general resources used by many different types of scenes in sibling folders, in a folder named after that resource's data type. For example, put `.shader` files in a `shaders/` folder.
 
 Here is an ASCII art example:
 ```bash
