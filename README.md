@@ -1,6 +1,6 @@
 # Game Project Architecture and Organization Advice for Godot 4.0+
 
-This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2), analyzing other Godot projects, and my discussions with other experienced Godot devs.
+This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2), analyzing other Godot projects, reading the practices recommended by the Godot manual, and having discussions with other experienced Godot devs.
 
 Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun.
 
