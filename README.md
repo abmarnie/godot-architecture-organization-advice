@@ -2,13 +2,14 @@
 
 This article summarizes [my opinions](https://twitter.com/abmarnie) on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent experience developing Ettare with [cdbunker2](https://twitter.com/cdbunker2), analyzing other Godot projects, reading the practices recommended by the Godot manual, and having discussions with other experienced Godot devs.
 
-#### Disclaimer:
+#### Disclaimer
 
 Be judicious: don't take things too far, only follow advice that you see the wisdom of, and avoid anything that seems unfun. In particular **architecture should always be tailored to the individual needs of a project.** For example: 
 - In a 2 day game jam, you should probably ignore architecture completely.
-- In some projects, a flatter directory structure, or a more "data oriented" approach where folders are seperated by data type (file extension) makes more sense.
+- In some projects, a flatter directory structure, or a more "data oriented" approach where folders are seperated by data type (file extension), might make more sense.
 
-**Contents**:
+#### Contents
+
 - [Directory Structure Advice](#directory-structure-advice)
 - [Scene Structure Advice](#scene-structure-advice)
 - [Quality of Life Advice](#quality-of-life-advice)
