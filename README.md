@@ -102,7 +102,7 @@ While the Godot documentation suggests placing source code near associated scene
 - **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
 - **Reduce FileSystem Clutter**: Create an empty `.gdignore` file in any folders which shouldn't show up inside the FileSystem dock.
 - **Improve Folder Visibility**: Color code project folders by with right click -> `Set Folder Color`.
-- **Eye Comfort**: Increase font size in Editor Settings to improve eye comfort.
+- **Font Size**: Increase font size in Editor Settings to reduce long-term eye strain.
 - **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once the project becomes very large.
 - **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
 - **Script Templates**: Save customized [script templates](https://docs.godotengine.org/en/stable/tutorials/scripting/creating_script_templates.html) in `.gdignore`'d `script_templates/` folder. Adjust Project Setting's `editor/script_templates_search_path` to `script_templates` folder. Consider using the `default.gd` and `Default.cs` provided in this repo for some saner defaults. To do so, simply save those files into a new `script_templates/node/` folder.
