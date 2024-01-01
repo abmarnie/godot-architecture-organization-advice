@@ -24,7 +24,7 @@ This section (mostly) aligns with the [Best Practices for Project Organization](
 - **Search-Based Navigation**: Prefix names of resources exclusively-used by a specific scene with that scene's name for efficient searching. Example: searching "balls_fish" should locate `balls_fish.tscn` and it's exclusive resources and files `balls_fish.gltf`, `balls_fish_albedo.png`, `balls_fish_fishdata.tres`, `balls_fish.mesh`, etc. In general, consider searchability when naming new files.
 - **Scene-Based Assets Folder**:  Organize scenes and their resources in an `assets/` folder. Each scene should have it's own exclusive folder which contains itself and it's exclusive resources.
     - **Inherited Scene Folders**: Nest folders for inherited scenes within their base scene's folder.
-    - **Locally Shared Resources**: Store shared resources of a specific "scene type" in a central folder, with subfolders for each owning scene. Avoid excessive nesting though.
+    - **Locally Shared Resources**: Store shared resources for a specific "scene type" in a central folder named after that "scene type", with subfolders for each owning scene. Avoid excessive nesting though.
     - **Globally Shared Resources**: Place general resources used by many different "scene types" in a sibling folder named after that resource's data type. For example, put all globally used `.shader` files in a `shaders/` folder.
 
 Here is an ASCII art example:
