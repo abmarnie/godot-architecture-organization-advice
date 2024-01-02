@@ -116,7 +116,9 @@ project_root/
 17. private methods (underscore-prefixed)
 18. subclasses
 ```
+
 The same rules can be applied in C#. For some C# specific tips: 
+
 	- Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
  	- Group `interface` implementations together. They should be placed right above `public` methods.
   	- For every single custom type (`struct`, `class`, `record`, `interface`, or `enum`) you declare, add `<summary> </summary>` blocks, which describes why that type exists, and how to use it.
