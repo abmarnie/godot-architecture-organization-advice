@@ -111,5 +111,29 @@ project_root/
 - **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once your project becomes very large.
 - **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
 - **Script Templates**: Consider saving the `default.gd` (or `Default.cs`) file provided in this repo into a `.gdignored` `script_templates/node` folder. Doing so provides you with a nicer default starting template everytime you create a new script.
+- **Be Consistent**: The more consistent things are structured, the easier it is to navigate around, find things, and make changes. Note that, in particular, it is recommended to order script members in the [following way](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order):
+```
+01. @tool
+02. class_name
+03. extends
+04. # docstring
+
+05. signals
+06. enums
+07. constants
+08. @export variables
+09. public variables
+10. private variables
+11. @onready variables
+
+12. optional built-in virtual _init method
+13. optional built-in virtual _enter_tree() method
+14. built-in virtual _ready method
+15. remaining built-in virtual methods
+16. public methods
+17. private methods
+18. subclasses
+```
+The same rules can be applied in C# (potentially including nested lightweight `struct` type declarations up at the top with `enum` type declarations).
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
