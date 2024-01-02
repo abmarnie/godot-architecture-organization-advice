@@ -122,16 +122,16 @@ project_root/
 06. enums
 07. constants
 08. @export variables
-09. public variables
-10. private variables
+09. public variables (non-underscore-prefixed)
+10. private variables (underscore-prefixed)
 11. @onready variables
 
 12. optional built-in virtual _init method
 13. optional built-in virtual _enter_tree() method
 14. built-in virtual _ready method
 15. remaining built-in virtual methods
-16. public methods
-17. private methods
+16. public methods (non-underscore-prefixed)
+17. private methods (underscore-prefixed)
 18. subclasses
 ```
 The same rules can be applied in C# (put nested lightweight nested `struct` declarations up at the top, next to nested `enum` declarations).
