@@ -117,11 +117,11 @@ project_root/
 18. subclasses
 ```
 
-The same rules can be applied in C#. For some C# specific tips: 
+The same ordering rules can be applied in C#. Some C# specific ordering considerations include: 
 
-	- Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
- 	- Group `interface` implementations together. They should be placed right above `public` methods.
-  	- For every single custom type (`struct`, `class`, `record`, `interface`, or `enum`) you declare, add `<summary> </summary>` blocks, which describes why that type exists, and how to use it.
+- Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
+- Put the backing fields of properties right before the property which uses them.
+- Group `interface` implementations together. They should be placed right above `public` methods.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
 
@@ -130,7 +130,7 @@ The same rules can be applied in C#. For some C# specific tips:
 - **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo.
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized with your local files. If you need to rename an entire folder and doing so naively breaks things (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
-- **Importing 3D Assets**:`.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable having Blender installed, working directly with `.blend` files in the engine is extremely convenient for fast iteration, and is also more convenient for version control purposes (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html#importing-blend-files-directly-within-godot) for detailed instructions for working with `.blend` files in Godot.
+- **Importing 3D Assets**:`.gltf` is generally recommended for larger teams (`.gltf` is to be preferred over `.glb`). For small teams in which everyone is comfortable having Blender installed, working directly with `.blend` files in the engine is extremely convenient for fast iteration, and is also more convenient for version control purposes (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html#importing-blend-files-directly-within-godot) for detailed instructions for working with `.blend` files in Godot.
 - **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except potentially when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
 - **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
 - **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
