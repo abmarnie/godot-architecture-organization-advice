@@ -134,6 +134,6 @@ project_root/
 17. private methods
 18. subclasses
 ```
-The same rules can be applied in C# (put nested lightweight `struct` declarations up at the top, next to `enum` declarations).
+The same rules can be applied in C# (put nested lightweight nested `struct` declarations up at the top, next to nested `enum` declarations).
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
