@@ -120,7 +120,7 @@ project_root/
 The same ordering rules can be applied in C#. Some C# specific ordering considerations include: 
 
 - Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
-- Put the backing fields of properties right before the property which uses them.
+- Put the backing fields of properties right before the property which uses them, even if they would be placed somewhere else otherwise.
 - Group `interface` implementations together. They should be placed right above `public` methods.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
