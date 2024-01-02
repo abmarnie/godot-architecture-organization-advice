@@ -96,25 +96,25 @@ project_root/
 - **Script Member Ordering**: The more consistent things are ordered, the easier it is to navigate and make changes. Note that, in particular, it is [officially recommended](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order) to order script members in the following way:
 ```
 01. @tool
-02. class_name
+02. class_name (PascalCase)
 03. extends
 04. # docstring
 
-05. signals
-06. enums
-07. constants
-08. @export variables
-09. public variables (non-underscore-prefixed)
-10. private variables (underscore-prefixed)
-11. @onready variables
+05. signals (snake_case)
+06. enums (PascalCase, members are CONSTANT_CASE)
+07. constants (CONSTANT_CASE)
+08. @export variables (snake_case)
+09. public variables (non-underscore-prefixed snake_case)
+10. private variables (underscore-prefixed _snake_case)
+11. @onready variables (snake_case)
 
 12. optional built-in virtual _init method
 13. optional built-in virtual _enter_tree() method
 14. built-in virtual _ready method
-15. remaining built-in virtual methods
-16. public methods (non-underscore-prefixed)
-17. private methods (underscore-prefixed)
-18. subclasses
+15. remaining built-in virtual methods (underscore-prefixed _snake_case)
+16. public methods (non-underscore-prefixed snake_case)
+17. private methods (underscore-prefixed _snake_case)
+18. subclasses (PascalCase)
 ```
 
 The same ordering rules can be applied in C#. Some C# specific ordering considerations include: 
