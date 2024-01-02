@@ -121,6 +121,7 @@ The same ordering rules can be applied in C#. Some C# specific ordering consider
 
 - Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
 - Put the backing fields of properties right before the property which uses them, even if they would be placed somewhere else otherwise.
+- C# `event`s (usually `Action` or `Func` types) should be placed at the top, where GDScript signals would go.
 - `Get`-only properties are basically just methods with non-`void` return types, so they should be grouped with methods.
 - Group `interface` implementations together. They should be placed right above `public` methods. You should probably make a comment `/// <see cref="IMyInterface"/>` to indicate the group.
 
