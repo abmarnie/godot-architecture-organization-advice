@@ -111,7 +111,7 @@ project_root/
 - **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once your project becomes very large.
 - **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
 - **Script Templates**: Consider saving the `default.gd` (or `Default.cs`) file provided in this repo into a `.gdignored` `script_templates/node` folder. Doing so provides you with a nicer default starting template everytime you create a new script.
-- **Be Consistent**: The more consistent things are structured, the easier it is to navigate around, find things, and make changes. Note that, in particular, it is recommended to order script members in the [following way](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order):
+- **Be Consistent**: The more consistent things are structured, the easier it is to navigate around, find things, and make changes. Note that, in particular, it is [officially recommended](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order) to order script members in the following way:
 ```
 01. @tool
 02. class_name
