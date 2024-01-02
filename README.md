@@ -93,24 +93,6 @@ project_root/
 - **Data Persistence and Sharing**: Use the `static` keyword for persistent data (if possible, e.g., you are trying to persist data for something like a Player or GUI object in a singleplayer game) or shared information and functionality. Consider using [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources) if inspector serialization is needed. [Use autoloads sparingly](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html) for larger projects. Autoloads should generally be used only if they have no dependencies and they never have their state externally mutated. 
 - **Structure SceneTree by Logical Relationship**: Organize the SceneTree relationally rather than spatially. Set `top_level = true` for spatial decoupling in parent-child relationships if needed.
 - **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
-- **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
-
-[[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
-
-## Quality of Life Advice
-
-- **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo.
-- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized with your local files. If you need to rename an entire folder and doing so naively breaks things (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
-- **Importing 3D Assets**:`.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable having Blender installed, working directly with `.blend` files in the engine is extremely convenient for fast iteration, and is also more convenient for version control purposes (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html#importing-blend-files-directly-within-godot) for detailed instructions for working with `.blend` files in Godot.
-- **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except potentially when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
-- **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
-- **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
-- **Reduce FileSystem Clutter**: Create an empty `.gdignore` file in any folders which shouldn't show up inside the FileSystem dock.
-- **Improve Folder Visibility**: Color code project folders with right click -> `Set Folder Color`.
-- **Font Size**: Increase font size in Editor Settings to reduce long-term eye strain.
-- **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once your project becomes very large.
-- **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
-- **Script Templates**: Consider saving the `default.gd` (or `Default.cs`) file provided in this repo into a `.gdignored` `script_templates/node` folder. Doing so provides you with a nicer default starting template everytime you create a new script.
 - **Be Consistent**: The more consistent things are structured, the easier it is to navigate around, find things, and make changes. Note that, in particular, it is [officially recommended](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order) to order script members in the following way:
 ```
 01. @tool
@@ -134,6 +116,27 @@ project_root/
 17. private methods (underscore-prefixed)
 18. subclasses
 ```
-The same rules can be applied in C# (put nested lightweight nested `struct` declarations up at the top, next to nested `enum` declarations).
+The same rules can be applied in C#. For some C# specific tips: 
+	- Put lightweight nested `struct` declarations up at the top, next to nested `enum` declarations.
+ 	- Group `interface` implementations together. They should be placed right above `public` methods.
+  	- For every single custom type (`struct`, `class`, `record`, `interface`, or `enum`) you declare, add `<summary> </summary>` blocks, which describes why that type exists, and how to use it.
+
+[[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
+
+## Quality of Life Advice
+
+- **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
+- **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo.
+- **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized with your local files. If you need to rename an entire folder and doing so naively breaks things (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
+- **Importing 3D Assets**:`.gltf` is generally recommended for larger teams. For small teams in which everyone is comfortable having Blender installed, working directly with `.blend` files in the engine is extremely convenient for fast iteration, and is also more convenient for version control purposes (so long as you use the `.gitattributes` and `.gitignore` file provided in this repo). See [this](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html#importing-blend-files-directly-within-godot) for detailed instructions for working with `.blend` files in Godot.
+- **Prefer `.tres` for Git**: When working with resources, prefer `.tres` over `.res` file extension, except potentially when dealing with large numerical data blobs like meshes. This makes Git history more human-interpretable.
+- **Node Utilization**: Leverage existing Nodes for common functionalities, unless you have a good reason to roll your own.
+- **View Owners before Deleting**: Right click -> `View Owners` before deleting scenes or resources, to make sure you won't break anything.
+- **Reduce FileSystem Clutter**: Create an empty `.gdignore` file in any folders which shouldn't show up inside the FileSystem dock.
+- **Improve Folder Visibility**: Color code project folders with right click -> `Set Folder Color`.
+- **Font Size**: Increase font size in Editor Settings to reduce long-term eye strain.
+- **Tech Stack Updates**: Regularly update Godot, .NET/C#, etc., for improvements. Be cautious about updating near release, or once your project becomes very large.
+- **Static Type Warnings**: As of Godot 4.2+, [enable type warnings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html#warning-system) for better autocomplete and compile time error detection. If you prefer succinctness, use type inference syntax `:=` for variable initialization.
+- **Script Templates**: Consider saving the `default.gd` (or `Default.cs`) file provided in this repo into a `.gdignored` `script_templates/node` folder. Doing so provides you with a nicer default starting template everytime you create a new script.
 
 [[Back to top.]](#game-project-architecture-and-organization-advice-for-godot-40)
