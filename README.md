@@ -92,7 +92,6 @@ project_root/
 - **Generality of Scenes**: Design scenes for potential reuse across the game. To reduce clutter, scenes used precisely once and which do not persist across scene loads should be "inlined" (right click in SceneTree -> `Make Local` -> right click in FileSystem -> `View Owners` to double check -> delete in FileSystem). You can always undo this later by doing: right click in SceneTree -> `Save Branch as Scene`.
 - **Data Persistence and Sharing**: Use the `static` keyword for persistent data (if possible, e.g., you are trying to persist data for something like a Player or GUI object in a singleplayer game) or shared information and functionality. Consider using [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources) if inspector serialization is needed. [Use autoloads sparingly](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html) for larger projects. Autoloads should generally only be used if they have no dependencies, and their internal state is read-only publicly. 
 - **Structure SceneTree by Logical Relationship**: Organize the SceneTree relationally rather than spatially. Set `top_level = true` for spatial decoupling in parent-child relationships if needed.
-- **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
 - **Script Member Ordering**: The more consistent things are ordered, the easier it is to navigate and make changes. It is [officially recommended](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order) to order script members in the following way:
 ```
 01. @tool
@@ -129,6 +128,7 @@ The same ordering rules can be applied in C#. Some C# specific ordering consider
 
 ## Quality of Life Advice
 
+- **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
 - **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo.
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized with your local files. If you need to rename an entire folder and doing so naively breaks things (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder. 
