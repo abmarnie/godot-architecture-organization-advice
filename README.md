@@ -69,7 +69,7 @@ project_root/
 |   |   |   |-- axe_abledo.png
 |   |   |-- ...
 |   |-- ...
-|-- src/ # If using an IDE (and even this is subjective). Otherwise, localize source code to the scene it is used in.
+|-- src/ # Alternatively, localize the source code to the scene it controls.
 |   |-- Player.cs
 |   |-- Weapon.cs
 |   |-- weapon_data.gd
@@ -88,7 +88,7 @@ project_root/
 	- Scene controller has a publically settable (non-underscore-prefixed) field/property for externals to directly inject a reference or value into.
 - **Limit Scene Inheritance**: Use scene inheritance sparingly due to its inflexibility. Limit inheritance to one layer if it's too convenient to pass up. It is most useful and necessary when inherting from an imported scene (from a `.blend` or a `.gltf` file).
 - **Non-Editable Subscene Children**: Keep subscene children non-editable for encapsulation. Exceptions can be made (e.g., for editing collision shapes), but a design requiring editable children generally indicates that the scene's root node controller script is insufficiently exposing data or functionality.
-- **Featureful Scenes**: To reduce clutter, avoid creating scenes with merely  1 or 2 nodes, *unless they have featureful controller scripts*. Often, non-featureful scenes can just be recreated in a few clicks. Some exceptions might naturally be made for editing convenience, e.g., for reusable visuals, reusable static level props (see next tip), or if you need to extend a class with a few pieces of data. 
+- **Featureful Scenes**: To reduce clutter, avoid creating scenes with merely  1 or 2 nodes, *unless they have featureful controller scripts*. Often, non-featureful scenes can just be recreated in a few clicks. Some exceptions might naturally be made for editing convenience, e.g., for reusable visuals, reusable static level props (see next tip), or if you extend a class with a few pieces of data would seriously help you. 
 - **Generality of Scenes**: Design scenes for potential reuse across the game. To reduce clutter, scenes used precisely once and which do not persist across scene loads should be "inlined" (right click in SceneTree -> `Make Local` -> right click in FileSystem -> `View Owners` to double check -> delete in FileSystem). You can always undo this later by doing: right click in SceneTree -> `Save Branch as Scene`.
 - **Data Persistence and Sharing**: Use the `static` keyword for scene-persistent data (if possible, e.g., you are trying to persist data for something like a Player or GUI object in a singleplayer game) or shared information and functionality. Other options include [custom resources](https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html#creating-your-own-resources) (if you need instance-specific scene-persistent without having to keep track of instance IDs) and autoloads (which the [Godot docs recommends you use sparingly](https://docs.godotengine.org/en/stable/tutorials/best_practices/autoloads_versus_internal_nodes.html) in large projects; as a rule of thumb, they are fine if they have no dependencies and their internal state is publically read-only).
 - **Structure SceneTree by Logical Relationship**: Organize the SceneTree relationally rather than spatially. Set `top_level = true` for spatial decoupling in parent-child relationships if needed.
