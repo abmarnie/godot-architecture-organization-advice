@@ -69,7 +69,7 @@ project_root/
 |   |   |   |-- axe_abledo.png
 |   |   |-- ...
 |   |-- ...
-|-- src/
+|-- src/ # If using an IDE (and even this is subjective). Otherwise, localize source code to the scene it is used in.
 |   |-- Player.cs
 |   |-- Weapon.cs
 |   |-- weapon_data.gd
