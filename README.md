@@ -6,7 +6,7 @@ This article summarizes my opinions on structuring a mid-sized Godot 4.0+ projec
 
 **Architecture should always be tailored to the individual needs of a project.** Selectively follow the advice that makes sense to you. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
 - In a 2 day game jam, you should probably ignore architecture entirely. The importance of architecture scales with the size and complexity of your project.
-- In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense.
+- In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense. One advantage of this approach is that you don't have to spend any time thinking about where to add new files.
 - Placing source code files further away from scenes probably won't confer you any benefits if you don't use an IDE. In fact, it may do nothing but hinder you. Even if you do use an IDE, it is rather subjective.
 
 #### Contents
@@ -129,6 +129,7 @@ The same ordering rules can be applied in C#. Some C# specific ordering consider
 ## Quality of Life Advice
 
 - **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
+- **Sharing Scenes across Projects**: Right click on a scene, click `Edit Dependencies`. If the dependencies are local to that Scene's folder, then you can simply drag and drop that folder across Godot projects and things should just work. This opens up new workflows, allowing artists who aren't comfortable with Git to work in seperate / local projects.
 - **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo.
 - **Refactor in the Editor**: Always move or rename files within the Godot editor to avoid Godot's cache from being desynchronized with your local files. If you need to rename an entire folder and doing so naively breaks things (you're using Git, right?), consider first renaming the leaf files before recursively working your way down to the root folder.
