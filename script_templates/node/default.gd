@@ -5,7 +5,7 @@
 extends  _BASE_
 
 func  _ready() -> void:
-	 pass
+	pass
 
 func  _physics_process(delta: float) -> void:
-	 pass
+	pass
