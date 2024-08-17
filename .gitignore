@@ -1,11 +1,19 @@
-nupkg/
-
+# Godot 4.0+ specific ignores:
 .godot/
+/android/
+*.translation
+
+# C sharp:
+nupkg/
 bin/
 obj/
 .generated/
+
+# VSCode:
 .vs/
+
+# Mac OS:
 .DS_Store
 
-*.translation
+# Blender:
 *.blend1
