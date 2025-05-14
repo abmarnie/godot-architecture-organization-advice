@@ -1,10 +1,13 @@
 # Game Project Architecture and Organization Advice for Godot 4.0+
 
-This article summarizes my opinions on structuring a mid-sized Godot 4.0+ project. It is drawn from my recent development experience with [Arctic Eggs](https://store.steampowered.com/app/2763670/Arctic_Eggs/), analyzing other Godot projects, reading the practices recommended by the Godot manual, and having discussions with other experienced devs ([WaterMuseum_](https://twitter.com/WaterMuseum_), [stimmel](https://github.com/stimmel), [Chickensoft Games](https://github.com/chickensoft-games), and general community feedback). I am also a fan of the book "A Philosophy of Software Design" by J. Ousterhout. For comments, clarifications, or suggestions, [raise an issue](https://github.com/abmarnie/godot-architecture-organization-advice/issues/new) or [start a discussion](https://github.com/abmarnie/godot-architecture-organization-advice/discussions/new/choose).
+In this article I offer advice on structuring a mid-sized Godot 4.0+ project. Here, I attempt to summarize in a structured manner the recommendations from the Godot manual, my personal development experience with [Arctic Eggs](https://store.steampowered.com/app/2763670/Arctic_Eggs/), observations from other Godot projects, and discussions with some of the devs ([WaterMuseum_](https://twitter.com/WaterMuseum_), [stimmel](https://github.com/stimmel), [Chickensoft Games](https://github.com/chickensoft-games)).
 
 #### Disclaimer
 
-**Architecture should always be tailored to the individual needs of a project.** Selectively follow the advice that makes sense to you. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
+The advice is a summary of observations and not a step-by-step guide. **Tailor architecture to the individual needs of each project.** Consider your goals and follow recomendations selectively. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
+
+Comments and suggestions are welcome, [start a discussion](https://github.com/abmarnie/godot-architecture-organization-advice/discussions/new/choose) or [raise an issue](https://github.com/abmarnie/godot-architecture-organization-advice/issues/new).
+
 - In a 2 day game jam, you should probably ignore architecture entirely. The importance of architecture scales with the size and complexity of your project.
 - In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense. One advantage of this approach is that you don't have to spend any time thinking about where to add new files.
 - Placing source code files further away from scenes probably won't confer you any benefits if you don't use an IDE. In fact, it may do nothing but hinder you. Even if you do use an IDE, it is rather subjective.
