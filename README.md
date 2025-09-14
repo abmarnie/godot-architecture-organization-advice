@@ -1,6 +1,6 @@
 # Game Project Architecture and Organization Advice for Godot 4.0+
 
-In this article I offer advice on structuring a mid-sized Godot 4.0+ project. Here, I attempt to summarize in a structured manner the recommendations from the Godot manual, my personal development experience with [Arctic Eggs](https://store.steampowered.com/app/2763670/Arctic_Eggs/), observations from other Godot projects, and discussions with some of the devs ([WaterMuseum_](https://twitter.com/WaterMuseum_), [stimmel](https://github.com/stimmel), [Chickensoft Games](https://github.com/chickensoft-games)).
+This article summarizes my opinions on structuring a mid-sized Godot 4.0+ project. Most of the opinions stated here are drawn from my own personal and professional experiences working within Godot, discussions with other experienced developers, and practices recommended by the official Godot documentation.
 
 #### Disclaimer
 
@@ -9,8 +9,8 @@ The advice is a summary of observations and not a step-by-step guide. **Tailor a
 Comments and suggestions are welcome, [start a discussion](https://github.com/abmarnie/godot-architecture-organization-advice/discussions/new/choose) or [raise an issue](https://github.com/abmarnie/godot-architecture-organization-advice/issues/new).
 
 - In a 2 day game jam, you should probably ignore architecture entirely. The importance of architecture scales with the size and complexity of your project.
-- In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense. One advantage of this approach is that you don't have to spend any time thinking about where to add new files.
-- Placing source code files further away from scenes probably won't confer you any benefits if you don't use an IDE. In fact, it may do nothing but hinder you. Even if you do use an IDE, it is rather subjective.
+- In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense. One advantage of this approach is that you don't have to spend any time thinking about where to add new files. 
+- Whether or not to place source code files further away from scenes is mostly subjective. I use VSCode heavily and personally find that having all my source code in one place makes things easier for me. 
 
 #### Contents
 
