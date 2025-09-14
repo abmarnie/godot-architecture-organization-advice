@@ -6,7 +6,7 @@ Comments and suggestions are welcome, [start a discussion](https://github.com/ab
 
 #### Disclaimer
 
-The advice is a summary of observations and not a step-by-step guide. **Tailor architecture to the individual needs of each project.** Consider your goals and follow recomendations selectively. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
+The advice is a summary of observations and not a step-by-step guide. **Tailor architecture to the individual needs of each project.** Follow recomendations selectively based on your goals, project requirements, preferences, and values. Avoid anything that seems unfun (don't feel compelled to do a massive refactor). Generally be judicious. 
 
 - In a 2 day game jam, you should probably ignore architecture entirely. If your codebase is going to end up under 10k lines-of-code, your project is to expected to only take 6 months, and/or you are working solo, the benefits here are probably marginal at best. The importance of architecture scales with the size (project size, team size) and complexity of your project.
 - In some projects, a more "data oriented" approach where folders are seperated by data type (file extension) might make more sense. One advantage of this approach is that you don't have to spend any time thinking about where to add new files. 
