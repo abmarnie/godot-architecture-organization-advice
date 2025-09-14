@@ -131,7 +131,7 @@ The same ordering rules can be applied in C#. Some C# specific ordering consider
 
 ## Quality of Life Advice
 
-- **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too, especially on smaller teams.
+- **Get Node Reference Sanely**: Use the new [scene unique nodes](https://docs.godotengine.org/en/stable/tutorials/scripting/scene_unique_nodes.html) feature to get nodes in a non-fragile way. Using `@export` is fine too.
 - **Sharing Scenes across Projects**: Right click on a scene, click `Edit Dependencies`. If the dependencies are local to that Scene's folder, then you can simply drag and drop that folder across Godot projects and things should just work. This opens up new workflows, allowing artists who aren't comfortable with Git to work in seperate / local projects.
 - **Eager Assertions**: Proactively assert (e.g., in `_ready`, or upon dependency injection) to ensure that critical node properties are correctly set. A proactive approach helps catch bugs early, reducing the need for excessive safety checks elsewhere.
 - **Reduce Git Bloat**: For optimal Git LFS setup and to avoid version control bloat, use the `.gitattributes` and `.gitignore` provided in this repo. Simply download them and place them in the root of your Git repo. I recommend you read [GitHub's documentation on managing large files](https://docs.github.com/en/repositories/working-with-files/managing-large-files).
