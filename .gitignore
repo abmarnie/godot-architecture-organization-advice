@@ -9,7 +9,7 @@ bin/
 obj/
 .generated/
 
-# VSCode:
+# Visual Studio:
 .vs/
 
 # Mac OS:
